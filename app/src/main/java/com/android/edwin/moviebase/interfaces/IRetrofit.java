@@ -11,10 +11,10 @@ import retrofit2.http.Path;
  */
 public interface IRetrofit {
 
-    @GET("movie/{name}")
-    Call<Movie> getMovie(@Path("name") String name);
+    @GET("/movie/550")
+    Call<Movie> getMovie(String name);
 
-    @GET("movies")
+    @GET("/discover/movie?sort_by=popularity.desc")
     Call<List<Movie>> getMovies();
 
 }
