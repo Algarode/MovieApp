@@ -2,13 +2,11 @@ package com.android.edwin.moviebase.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.android.edwin.moviebase.R;
 import com.android.edwin.moviebase.domain.Movie;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,16 +21,17 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         BaseActivity baseActivity = new BaseActivity();
-
-        baseActivity.getRetrofit().getMovies().enqueue(new Callback<List<Movie>>() {
+        Call<Movie> call = baseActivity.getRetrofit().getStandardMovie();
+        call.enqueue(new Callback<Movie>() {
             @Override
-            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                System.out.println("hoi");
+            public void onResponse(Call<Movie> call, Response<Movie> response) {
+                Log.i("INFO", "SUCCESS");
+                Movie movie = response.body();
             }
 
             @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
-
+            public void onFailure(Call<Movie> call, Throwable t) {
+                Log.e("ERROR", "FAIL: " + t.getMessage());
             }
         });
     }
