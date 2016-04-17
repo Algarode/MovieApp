@@ -5,18 +5,30 @@ package com.android.edwin.moviebase.domain;
  */
 public class Movie {
 
-    private String name;
+    private String title;
+    private String overview;
+    private String release_date;
+    private int runtime;
 
-    public Movie(String name) {
-        this.name = name;
+    public Movie(String title, String overview) {
+        this.title = title;
+        this.overview = overview;
     }
 
-    public String getName() {
-        return name;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setSitle(String title) {
+        this.title = title;
     }
 
 }
