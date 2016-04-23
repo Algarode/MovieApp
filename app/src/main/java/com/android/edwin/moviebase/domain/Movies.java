@@ -7,14 +7,18 @@ import java.util.List;
  */
 public class Movies {
 
-    List<Movie> movies;
+    List<Movie> results;
+
+    public Movies(List<Movie> movies) {
+        this.results = movies;
+    }
 
     public List<Movie> getMovies() {
-        return movies;
+        return results;
     }
 
     public void setMovies(List<Movie> movies) {
-        this.movies = movies;
+        this.results = movies;
     }
 
 }
