@@ -58,9 +58,11 @@ public class ListAdapter extends ArrayAdapter<Movie> {
 
         ImageView imageView = (ImageView) row.findViewById(R.id.ivMovieImage);
         TextView textView = (TextView) row.findViewById(R.id.tvMovieName);
+        TextView textView2 = (TextView) row.findViewById(R.id.tvRating);
 
         Picasso.with(context).load(Constants.IMAGE_PATH + getItem(position).getPosterPath()).placeholder(R.mipmap.ic_launcher).into(imageView);
         textView.setText(getItem(position).getTitle());
+        textView2.setText("Vote avg: " + getItem(position).getVoteAverage().toString());
 
         return row;
     }
