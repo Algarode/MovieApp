@@ -8,27 +8,27 @@ import java.util.List;
  */
 public class Movie {
 
-    private String posterPath;
+    private String poster_path;
     private Boolean adult;
     private String overview;
     private String release_date;
     private List<Integer> genreIds = new ArrayList<Integer>();
     private Integer id;
-    private String originalTitle;
-    private String originalLanguage;
+    private String original_title;
+    private String original_language;
     private String title;
-    private String backdropPath;
+    private String backdrop_path;
     private Double popularity;
-    private Integer voteCount;
+    private Integer vote_count;
     private Boolean video;
-    private Double voteAverage;
+    private Double vote_average;
 
     public String getPosterPath() {
-        return posterPath;
+        return poster_path;
     }
 
     public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+        this.poster_path = posterPath;
     }
 
     public Boolean getAdult() {
@@ -72,19 +72,19 @@ public class Movie {
     }
 
     public String getOriginalTitle() {
-        return originalTitle;
+        return original_title;
     }
 
     public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
+        this.original_title = originalTitle;
     }
 
     public String getOriginalLanguage() {
-        return originalLanguage;
+        return original_language;
     }
 
     public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
+        this.original_language = originalLanguage;
     }
 
     public String getTitle() {
@@ -96,11 +96,11 @@ public class Movie {
     }
 
     public String getBackdropPath() {
-        return backdropPath;
+        return backdrop_path;
     }
 
     public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
+        this.backdrop_path = backdropPath;
     }
 
     public Double getPopularity() {
@@ -112,11 +112,11 @@ public class Movie {
     }
 
     public Integer getVoteCount() {
-        return voteCount;
+        return vote_count;
     }
 
     public void setVoteCount(Integer voteCount) {
-        this.voteCount = voteCount;
+        this.vote_count = voteCount;
     }
 
     public Boolean getVideo() {
@@ -128,11 +128,11 @@ public class Movie {
     }
 
     public Double getVoteAverage() {
-        return voteAverage;
+        return vote_average;
     }
 
     public void setVoteAverage(Double voteAverage) {
-        this.voteAverage = voteAverage;
+        this.vote_average = voteAverage;
     }
 
 }
