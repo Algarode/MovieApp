@@ -9,5 +9,6 @@ public class Constants {
     public static final String API_KEY = "856de636e11c51b66e81ef1d76f18b05";
     public static final String API_PARAM = "?api_key=" + API_KEY;
     public static final String API_PARAM_AND = "&api_key=" + API_KEY;
+    public static final String IMAGE_PATH = "http://image.tmdb.org/t/p/w500";
 
 }
