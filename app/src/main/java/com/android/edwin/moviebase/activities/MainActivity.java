@@ -5,13 +5,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import com.android.edwin.moviebase.R;
+import com.android.edwin.moviebase.adapters.ListAdapter;
 import com.android.edwin.moviebase.domain.Movie;
+import com.android.edwin.moviebase.domain.Movies;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends BaseActivity {
+
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,38 +25,38 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        listView = (ListView) findViewById(R.id.listView);
 
         BaseActivity baseActivity = new BaseActivity();
-        Call<Movie> call = baseActivity.getRetrofit().getStandardMovie();
-        call.enqueue(new Callback<Movie>() {
+
+        baseActivity.getRetrofit().getMovies().enqueue(new Callback<Movies>() {
             @Override
-            public void onResponse(Call<Movie> call, Response<Movie> response) {
+            public void onResponse(Call<Movies> call, Response<Movies> response) {
                 Log.i("INFO", "SUCCESS");
-                Movie movie = response.body();
+                List<Movie> movies = response.body().getMovies();
+                ListAdapter listAdapter = new ListAdapter(getApplicationContext(), R.layout.list_layout, movies);
+                listView.setAdapter(listAdapter);
             }
 
             @Override
-            public void onFailure(Call<Movie> call, Throwable t) {
-                Log.e("ERROR", "FAIL: " + t.getMessage());
+            public void onFailure(Call<Movies> call, Throwable t) {
+                Log.e("ERROR", "FAIL");
             }
         });
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
