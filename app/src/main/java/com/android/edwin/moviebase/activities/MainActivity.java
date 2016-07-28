@@ -21,6 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends BaseActivity {
 
     private ListView listView;
+    private List<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Movies> call, Response<Movies> response) {
                 Log.i("INFO", "SUCCESS");
-                List<Movie> movies = response.body().getMovies();
+                movies = response.body().getMovies();
                 ListAdapter listAdapter = new ListAdapter(getApplicationContext(), R.layout.list_layout, movies);
                 listView.setAdapter(listAdapter);
             }
@@ -52,7 +53,9 @@ public class MainActivity extends BaseActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = movies.get(position);
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("movieObject", movie);
                 startActivity(intent);
             }
         });

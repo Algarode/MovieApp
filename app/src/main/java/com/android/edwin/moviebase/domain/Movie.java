@@ -1,12 +1,13 @@
 package com.android.edwin.moviebase.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Edwin on 30-3-2016.
  */
-public class Movie {
+public class Movie implements Serializable {
 
     private String poster_path;
     private Boolean adult;
